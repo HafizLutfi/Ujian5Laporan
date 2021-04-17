@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.juaracoding.ujian5.entity.Laporan;
+import com.juaracoding.ujian5.respository.LaporanRespository;
 import com.juaracoding.ujian5.service.ModelLaporan;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -109,6 +110,16 @@ public class LaporanPage {
 		
 		
 				
+	}
+	@Autowired
+	LaporanRespository laporanRespo;
+	
+	@GetMapping("/dashboard")
+	public String viewDashboard(Model model) {
+		model.addAttribute("jumlahLaporan",laporanRespo.count());
+//		model.addAttribute("jumlahProses",laporanRespo.countKosong());
+//		model.addAttribute("jumlahTanggap",laporanRespo.countTerisi());
+		return"dashboard";
 	}
 
 }

@@ -43,5 +43,4 @@ public class ModelLaporan implements ModelLaporanInterface {
 		// TODO Auto-generated method stub
 		this.laporanrespo.deleteById(Long.parseLong(id));
 	}
-
 }

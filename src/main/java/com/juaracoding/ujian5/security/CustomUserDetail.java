@@ -25,11 +25,11 @@ public class CustomUserDetail implements UserDetails {
     	final List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
     	
     	switch (this.user.getRole()) {
-		case "admin":
+		case "ADMIN":
 			authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 			break;
 
-		case "user":
+		case "USER":
 			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 			break;
 		}
