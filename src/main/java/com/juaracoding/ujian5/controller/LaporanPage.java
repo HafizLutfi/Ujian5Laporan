@@ -135,8 +135,8 @@ public class LaporanPage {
 	@GetMapping("/dashboard")
 	public String viewDashboard(Model model) {
 		model.addAttribute("jumlahLaporan",laporanRespo.count());
-		model.addAttribute("jumlahProses",laporanRespo.countKosong());
-		model.addAttribute("jumlahTanggap",laporanRespo.countTerisi());
+		model.addAttribute("jumlahProses",laporanRespo.countKosong("null"));
+		model.addAttribute("jumlahTanggap",laporanRespo.countIsi());
 		return"dashboard";
 	}
 

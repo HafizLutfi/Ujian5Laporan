@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.juaracoding.ujian5.entity.Laporan;
 
-
+@Service
 public interface ModelLaporanInterface {
 
 	public List<Laporan> getAllLaporan();
