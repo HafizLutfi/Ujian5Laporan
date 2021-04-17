@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,6 +38,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Controller
 public class LaporanPage {
+	
+	
 
 	private static final String UPLOAD_DIR = null;
 	@Autowired
@@ -107,18 +112,31 @@ public class LaporanPage {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		
-				
+						
 	}
+	
+	@PutMapping("/laporan/updateApproved/{id}")
+	public String updateStatusApproved(@PathVariable("Id")String id) {
+		
+		modelLaporan.setStatusApproved(Long.parseLong(id));
+		return "redirect:/laporan/view" ;
+	}
+	
+	@PutMapping("/laporan/updateReject/{id}")
+	public String updateStatusReject(@PathVariable("Id")String id) {
+		
+		modelLaporan.setStatusApproved(Long.parseLong(id));
+		return "redirect:/laporan/view" ;
+	}
+	
 	@Autowired
 	LaporanRespository laporanRespo;
 	
 	@GetMapping("/dashboard")
 	public String viewDashboard(Model model) {
 		model.addAttribute("jumlahLaporan",laporanRespo.count());
-//		model.addAttribute("jumlahProses",laporanRespo.countKosong());
-//		model.addAttribute("jumlahTanggap",laporanRespo.countTerisi());
+		model.addAttribute("jumlahProses",laporanRespo.countKosong());
+		model.addAttribute("jumlahTanggap",laporanRespo.countTerisi());
 		return"dashboard";
 	}
 

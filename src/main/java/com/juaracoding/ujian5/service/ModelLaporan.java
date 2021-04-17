@@ -43,4 +43,18 @@ public class ModelLaporan implements ModelLaporanInterface {
 		// TODO Auto-generated method stub
 		this.laporanrespo.deleteById(Long.parseLong(id));
 	}
+
+
+	@Override
+	public void setStatusApproved(long id) {
+		// TODO Auto-generated method stub
+		this.laporanrespo.setStatus("APPROVED",id);
+	}
+	
+
+	@Override
+	public void setStatusReject(long id) {
+		// TODO Auto-generated method stub
+		this.laporanrespo.setStatus("REJECT",id);
+	}
 }
