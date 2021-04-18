@@ -74,21 +74,21 @@ public class LaporanPage {
 		return "redirect:/laporan/view";
 	}
 	
-	@GetMapping("/laporan/update/{id}")
-	public String updateLaporan(@PathVariable String id, Model model) {
-		
-		Laporan laporan = this.modelLaporan.getLaporanById(id);
-		model.addAttribute("laporan",laporan);
-		return "add_laporan";
-	}
-	
-	@GetMapping("/laporan/delete/{id}")
-	public String deleteLaporan(@PathVariable String id, Model model) {
-		
-		this.modelLaporan.deleteLaporan(id);
-		model.addAttribute("listlaporan",modelLaporan.getAllLaporan());
-		return"redirect:/laporan/view";
-	}
+//	@GetMapping("/laporan/update/{id}")
+//	public String updateLaporan(@PathVariable String id, Model model) {
+//		
+//		Laporan laporan = this.modelLaporan.getLaporanById(id);
+//		model.addAttribute("laporan",laporan);
+//		return "add_laporan";
+//	}
+//	
+//	@GetMapping("/laporan/delete/{id}")
+//	public String deleteLaporan(@PathVariable String id, Model model) {
+//		
+//		this.modelLaporan.deleteLaporan(id);
+//		model.addAttribute("listlaporan",modelLaporan.getAllLaporan());
+//		return"redirect:/laporan/view";
+//	}
 	
 	@GetMapping("/laporan/report/pdf")
 	public void exportPDF() {

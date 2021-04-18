@@ -25,6 +25,7 @@
       <th scope="col">Nama</th>
       <th scope="col">Kejadian</th>
        <th scope="col">Alamat</th>
+       <th scope="col">Status</th>
        <th scope="col">Action</th>
     </tr>
   </thead>
@@ -35,13 +36,15 @@
       <td th:text="${laporan.namaLaporan}"></td>
       <td th:text="${laporan.kejadian}"></td>
       <td th:text="${laporan.alamat}"></td>
+      <td th:text="${laporan.status}"></td>
       
       <td>
       <div th:switch="${laporan.status}">
- 	  <p th:case="status.null"></p>
+ 	  <p th:case="${laporan.status = null}">
          <a th:href="@{/laporan/updateApproved/{id}(id=${laporan.idLaporan})}" class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-folder" ></i> Approved </a>
          <a th:href="@{/laporan/updateReject/{id}(id=${laporan.idLaporan})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Reject </a>
-      <p th:case="*"> </p>
+      </p>
+      <p th:case="*"></p>
       </div>
       </td>
     </tr>
