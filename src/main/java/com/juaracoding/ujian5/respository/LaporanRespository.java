@@ -19,15 +19,15 @@ public interface LaporanRespository extends CrudRepository<Laporan, Long>{
 	Laporan findByNamaLaporan(String nama);
 
 	
-	@Query("select count(l) from laporan l where :status is null")
-	Laporan countKosong();
+	@Query(value="select count(*) from laporan where laporan.status IS NULL",nativeQuery = true)
+	long countKosong();
 	
-	@Query("select count(l) from laporan l where :status is not null")
-	Laporan countIsi();
+	@Query(value="select count(*) from laporan where laporan.status IS NOT NULL",nativeQuery = true)
+	long countIsi();
 	
 
 	@Modifying
-	@Query(value = "update laporan l set l.status = :status where l.id_laporan= :Id",nativeQuery = true)
-	void setStatus(@Param("status") String status, @Param("Id") long Id);
+	@Query(value = "update laporan set laporan.status = :status where laporan.id_laporan= :Id",nativeQuery = true)
+	void setStatus(@Param("status") String status, @Param("Id") String Id);
 
 }

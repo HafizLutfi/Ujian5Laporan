@@ -38,10 +38,10 @@
       
       <td>
       <div th:switch="${laporan.status}">
- 	  <p th:case="${status=null}"></p>
+ 	  <p th:case="status.null"></p>
          <a th:href="@{/laporan/updateApproved/{id}(id=${laporan.idLaporan})}" class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-folder" ></i> Approved </a>
          <a th:href="@{/laporan/updateReject/{id}(id=${laporan.idLaporan})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Reject </a>
-      <p th:case="*"></p>
+      <p th:case="*"> </p>
       </div>
       </td>
     </tr>

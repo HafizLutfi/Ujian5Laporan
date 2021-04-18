@@ -46,15 +46,15 @@ public class ModelLaporan implements ModelLaporanInterface {
 
 
 	@Override
-	public void setStatusApproved(long id) {
+	public void setStatusApproved(String Id) {
 		// TODO Auto-generated method stub
-		this.laporanrespo.setStatus("APPROVED",id);
+		this.laporanrespo.setStatus("APPROVED",Id);
 	}
 	
 
 	@Override
-	public void setStatusReject(long id) {
+	public void setStatusReject(String Id) {
 		// TODO Auto-generated method stub
-		this.laporanrespo.setStatus("REJECT",id);
+		this.laporanrespo.setStatus("REJECT",Id);
 	}
 }

@@ -14,6 +14,6 @@ public interface ModelLaporanInterface {
 	public Laporan addLaporan(Laporan laporan);
 	public Laporan getLaporanByName(String name);
 	public void deleteLaporan(String id);
-	void setStatusApproved(long id);
-	void setStatusReject(long id);
+	void setStatusApproved(String Id);
+	void setStatusReject(String Id);
 }

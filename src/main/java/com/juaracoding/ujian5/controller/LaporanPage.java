@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
@@ -114,18 +115,20 @@ public class LaporanPage {
 		
 						
 	}
-	
-	@PutMapping("/laporan/updateApproved/{id}")
-	public String updateStatusApproved(@PathVariable("Id")String id) {
+	@Transactional
+	@GetMapping("/laporan/updateApproved/{Id}")
+	public String updateStatusApproved(@PathVariable String Id,Model model) {
 		
-		modelLaporan.setStatusApproved(Long.parseLong(id));
+		this.modelLaporan.setStatusApproved(Id);
+		model.addAttribute("listlaporan",modelLaporan.getAllLaporan());
 		return "redirect:/laporan/view" ;
 	}
-	
-	@PutMapping("/laporan/updateReject/{id}")
-	public String updateStatusReject(@PathVariable("Id")String id) {
+	@Transactional
+	@GetMapping("/laporan/updateReject/{Id}")
+	public String updateStatusReject(@PathVariable String Id,Model model) {
 		
-		modelLaporan.setStatusApproved(Long.parseLong(id));
+		this.modelLaporan.setStatusReject(Id);
+		model.addAttribute("listlaporan",modelLaporan.getAllLaporan());
 		return "redirect:/laporan/view" ;
 	}
 	
@@ -135,7 +138,7 @@ public class LaporanPage {
 	@GetMapping("/dashboard")
 	public String viewDashboard(Model model) {
 		model.addAttribute("jumlahLaporan",laporanRespo.count());
-		model.addAttribute("jumlahProses",laporanRespo.countKosong("null"));
+		model.addAttribute("jumlahProses",laporanRespo.countKosong());
 		model.addAttribute("jumlahTanggap",laporanRespo.countIsi());
 		return"dashboard";
 	}
